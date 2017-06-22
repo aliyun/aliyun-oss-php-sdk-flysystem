@@ -22,10 +22,10 @@ class AliyunOssAdapterTest extends PHPUnit_Framework_TestCase
         /*
          * TODO 测试依赖
          */
-        $accessId = 'you access id';
-        $accessKey = 'you access key';
-        $endPoint = 'oss-cn-beijing.aliyuncs.com';
-        $bucket = 'you bucket';
+        $accessId = 'vX6ik2aG3MYYnouB';
+        $accessKey = 'MkvsblmKhReBIETFrfmcm92iI479Yl';
+        $endPoint = 'oss-cn-hangzhou.aliyuncs.com';
+        $bucket = 'moyue-hz';
 
         $client = new OssClient($accessId, $accessKey, $endPoint);
         $adapter = new AliyunOssAdapter($client, $bucket);

@@ -1,4 +1,12 @@
-vendor/composer
+vendor/composer/
+vendor/bin/
+vendor/doctrine/
+vendor/phpdocumentor/
+vendor/phpspec/
+vendor/phpunit/
+vendor/sebastian/
+vendor/symfony/
+vendor/webmozart/
 composer.lock
 doc
 output

@@ -12,7 +12,7 @@
 	</logging>
 	<testsuites>
 		<testsuite name="FunctionTest">
-			<directory>./vendor/apollopy/flysystem-aliyun-oss/tests/AliyunOssAdapterTest.php</directory>
+			<directory>./vendor/apollopy/flysystem-aliyun-oss/tests/</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
