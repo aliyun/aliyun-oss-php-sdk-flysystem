@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<phpunit>
+	<filter>
+		<whitelist>
+			<directory suffix=".php">./src</directory>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="coverage-clover" target="coverage.xml" />
+	</logging>
+	<testsuites>
+		<testsuite name="FunctionTest">
+			<directory>./vendor/apollopy/flysystem-aliyun-oss/tests/AliyunOssAdapterTest.php</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
