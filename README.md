@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/RobertYue19900425/aliyun-oss-flysystem.svg?branch=master)](https://travis-ci.org/RobertYue19900425/aliyun-oss-flysystem)
 [![Coverage Status](https://coveralls.io/repos/github/RobertYue19900425/aliyun-oss-flysystem/badge.svg?branch=master)](https://coveralls.io/github/RobertYue19900425/aliyun-oss-flysystem?branch=master)
 
-This is a Flysystem adapter for the Aliyun OSS ~2.2.1
+This is a Flysystem adapter for the Aliyun OSS ~1.0.0
 
 ## Installation
 
