@@ -1,0 +1,25 @@
+{
+  "name": "moyue/aliyun-oss-flysystem",
+  "description": "This is a Flysystem adapter for the Aliyun OSS ~2.0.4",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "RobertYue19900425",
+      "homepage": "https://github.com/aliyun/aliyun-oss-php-sdk-flysystem"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "league/flysystem": "~1.0",
+    "aliyuncs/oss-sdk-php": "~2.2.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "satooshi/php-coveralls": "~1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Moyue\\Flysystem\\AliyunOss\\": "src/"
+    }
+  }
+}
