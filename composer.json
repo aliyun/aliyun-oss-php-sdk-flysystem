@@ -1,10 +1,10 @@
 {
-  "name": "moyue/aliyun-oss-flysystem",
+  "name": "aliyun/aliyun-oss-flysystem",
   "description": "This is a Flysystem adapter for the Aliyun OSS ~2.2.1",
   "license": "MIT",
   "authors": [
     {
-      "name": "RobertYue19900425",
+      "name": "aliyun oss",
       "homepage": "https://github.com/aliyun/aliyun-oss-php-sdk-flysystem"
     }
   ],
@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Moyue\\Flysystem\\AliyunOss\\": "src/"
+      "Aliyun\\Flysystem\\AliyunOss\\": "src/"
     }
   }
 }

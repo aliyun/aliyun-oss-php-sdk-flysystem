@@ -5,16 +5,16 @@
 
 This is a Flysystem adapter for the Aliyun OSS ~1.0.0
 
-## Installation
+## 安装flysystem
 
 ```bash
-composer require moyue/aliyun-oss-flysystem
+composer require aliyun/aliyun-oss-flysystem
 ```
 
-## Runing samples
+## 运行实例
 
 ```
-cd vendor/moyue/aliyun-oss-flysystem/
+cd vendor/aliyun/aliyun-oss-flysystem/
 vim samples/Config.php
 
 modify the following config:
@@ -26,14 +26,14 @@ modify the following config:
 php samples/AliyunOssFlysystem.php
 ```
 
-## Runing tests
+## 运行测试
 
 ```bash
 export OSS_ACCESS_KEY_ID=your id
 export OSS_ACCESS_KEY_SECRET=your secret
 export OSS_ENDPOINT=your endpoint
 export OSS_BUCKET=your bucket
-cd vendor/moyue/aliyun-oss-flysystem/
+cd vendor/aliyun/aliyun-oss-flysystem/
 composer install
 php vendor/bin/phpunit
 ```
