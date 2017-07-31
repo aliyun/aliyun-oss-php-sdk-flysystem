@@ -9,8 +9,8 @@ require_once __DIR__ . '/Config.php';
 use OSS\OssClient;
 use OSS\Core\OssException;
 use League\Flysystem\Filesystem;
-use Moyue\Flysystem\AliyunOss\Plugins\PutFile;
-use Moyue\Flysystem\AliyunOss\AliyunOssAdapter;
+use Aliyun\Flysystem\AliyunOss\Plugins\PutFile;
+use Aliyun\Flysystem\AliyunOss\AliyunOssAdapter;
 
 $bucket = Common::getBucketName();
 $ossClient = Common::getOssClient();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Moyue\Flysystem\AliyunOss\Plugins;
+namespace Aliyun\Flysystem\AliyunOss\Plugins;
 
 use League\Flysystem\Config;
 use League\Flysystem\Plugin\AbstractPlugin;

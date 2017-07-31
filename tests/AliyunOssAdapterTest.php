@@ -1,12 +1,12 @@
 <?php
 
-namespace Moyue\Flysystem\AliyunOss\Tests;
+namespace Aliyun\Flysystem\AliyunOss\Tests;
 
 use OSS\OssClient;
 use PHPUnit_Framework_TestCase;
 use League\Flysystem\Filesystem;
-use Moyue\Flysystem\AliyunOss\Plugins\PutFile;
-use Moyue\Flysystem\AliyunOss\AliyunOssAdapter;
+use Aliyun\Flysystem\AliyunOss\Plugins\PutFile;
+use Aliyun\Flysystem\AliyunOss\AliyunOssAdapter;
 
 class AliyunOssAdapterTest extends \PHPUnit_Framework_TestCase
 {
