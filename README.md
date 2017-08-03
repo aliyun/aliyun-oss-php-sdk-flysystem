@@ -8,7 +8,7 @@ This is a Flysystem adapter for the Aliyun OSS ~1.1.0
 ## 安装flysystem
 
 ```bash
-composer require alicloud/aliyun-oss-flysystem
+composer require aliyuncs/aliyun-oss-flysystem
 ```
 
 ## 运行实例

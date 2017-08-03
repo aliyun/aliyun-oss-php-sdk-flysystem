@@ -1,6 +1,6 @@
 # ChangeLog
 
-## 1.1.0 / 2017-08-03
+## 1.1.1 / 2017-08-03
 
 * release package
 
