@@ -1,5 +1,5 @@
 {
-  "name": "alicloud/aliyun-oss-flysystem",
+  "name": "aliyuncs/aliyun-oss-flysystem",
   "description": "This is a Flysystem adapter for the Aliyun OSS ~2.2.1",
   "license": "MIT",
   "authors": [
