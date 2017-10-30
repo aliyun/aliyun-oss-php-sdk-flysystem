@@ -276,6 +276,7 @@ class AliyunOssAdapter extends AbstractAdapter
     public function listContents($directory = '', $recursive = false)
     {
         $directory = $this->applyPathPrefix($directory);
+        $directory = $this->applyPathSeparator($directory);
 
         $bucket = $this->bucket;
         $delimiter = '/';
@@ -461,4 +462,10 @@ class AliyunOssAdapter extends AbstractAdapter
 
 		return $objectList || $prefixList;
     }
+    
+	protected function applyPathSeparator($path)
+    {
+        return rtrim($path, '\\/') . '/';
+    }
+
 }

@@ -287,8 +287,8 @@ class AliyunOssAdapterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(count($list), 4);
  
         $list = $this->filesystem->listContents($dir, false);
-        $this->assertEquals(count($list), 0);
-       
+        $this->assertEquals(count($list), 4);
+		
 		$this->filesystem->deleteDir($dir);
 	}
 

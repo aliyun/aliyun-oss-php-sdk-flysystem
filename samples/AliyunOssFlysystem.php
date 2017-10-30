@@ -71,7 +71,7 @@ $filesystem->createDir('test');
 // 拷贝oss文件
 $filesystem->copy('2.txt', 'test/3.txt');
 
-//
+// 按前缀list, true是递归list出所有文件,false只list当前文件夹的文件
 $result = $filesystem->listContents('', true);
 echo "listContents result: ";
 print_r($result);
