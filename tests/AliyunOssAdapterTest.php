@@ -282,13 +282,22 @@ class AliyunOssAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->filesystem->write($dir . '/3.txt', '123');
 		$this->filesystem->write($dir . '/secondlevel/4.txt', '123');
 		 
-
         $list = $this->filesystem->listContents($dir, true);
         $this->assertEquals(count($list), 4);
+
+        $this->assertEquals($list[0]['path'], $dir . '/1.txt');
+        $this->assertEquals($list[1]['path'], $dir . '/2.txt');
+        $this->assertEquals($list[2]['path'], $dir . '/3.txt');
+        $this->assertEquals($list[3]['path'], $dir . '/secondlevel/4.txt');
  
         $list = $this->filesystem->listContents($dir, false);
         $this->assertEquals(count($list), 4);
-		
+	
+        $this->assertEquals($list[0]['path'], $dir . '/1.txt');
+        $this->assertEquals($list[1]['path'], $dir . '/2.txt');
+        $this->assertEquals($list[2]['path'], $dir . '/3.txt');
+        $this->assertEquals($list[3]['path'], $dir . '/secondlevel');
+	
 		$this->filesystem->deleteDir($dir);
 	}
 

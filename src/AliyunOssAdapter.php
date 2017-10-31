@@ -211,7 +211,7 @@ class AliyunOssAdapter extends AbstractAdapter
             if ($val['type'] === 'file') {
                 $objects[] = $this->applyPathPrefix($val['path']);
             } else {
-                $objects[] = $this->applyPathPrefix($val['path']).'/';
+                $objects[] = $this->applyPathPrefix($val['path']) .'/';
             }
         }
 
