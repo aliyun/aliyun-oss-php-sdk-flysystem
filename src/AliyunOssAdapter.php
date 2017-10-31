@@ -463,7 +463,7 @@ class AliyunOssAdapter extends AbstractAdapter
 		return $objectList || $prefixList;
     }
     
-	protected function applyPathSeparator($path)
+    protected function applyPathSeparator($path)
     {
         return rtrim($path, '\\/') . '/';
     }
