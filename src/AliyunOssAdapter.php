@@ -275,8 +275,8 @@ class AliyunOssAdapter extends AbstractAdapter
      */
     public function listContents($directory = '', $recursive = false)
     {
-        $directory = $this->applyPathPrefix($directory);
         $directory = $this->applyPathSeparator($directory);
+        $directory = $this->applyPathPrefix($directory);
 
         $bucket = $this->bucket;
         $delimiter = '/';

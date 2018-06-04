@@ -2,8 +2,9 @@
 
 if (is_file(__DIR__ . '/../../../aliyuncs/oss-sdk-php/autoload.php')) {
     require_once __DIR__ . '/../../../aliyuncs/oss-sdk-php/autoload.php';
+} elseif (is_file(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
 }
-require_once __DIR__ . '/Config.php';
 
 use OSS\OssClient;
 use OSS\Core\OssException;
@@ -15,11 +16,6 @@ use OSS\Core\OssException;
  */
 class Common
 {
-    const endpoint = Config::OSS_ENDPOINT;
-    const accessKeyId = Config::OSS_ACCESS_ID;
-    const accessKeySecret = Config::OSS_ACCESS_KEY;
-    const bucket = Config::OSS_TEST_BUCKET;
-
     /**
      * 根据Config配置，得到一个OssClient实例
      *
@@ -28,7 +24,7 @@ class Common
     public static function getOssClient()
     {
         try {
-            $ossClient = new OssClient(self::accessKeyId, self::accessKeySecret, self::endpoint, false);
+            $ossClient = new OssClient(self::getAccessKeyId(), self::getAccessKeySecret(), self::getEndpoint(), false);
         } catch (OssException $e) {
             printf(__FUNCTION__ . "creating OssClient instance: FAILED\n");
             printf($e->getMessage() . "\n");
@@ -37,9 +33,24 @@ class Common
         return $ossClient;
     }
 
+    public static function getAccessKeyId()
+    {
+        return getenv('OSS_ACCESS_KEY_ID');
+    }
+
+    public static function getAccessKeySecret()
+    {
+        return getenv('OSS_ACCESS_KEY_SECRET');
+    }
+
+    public static function getEndpoint()
+    {
+        return getenv('OSS_ENDPOINT');
+    }
+
     public static function getBucketName()
     {
-        return self::bucket;
+        return getenv('OSS_BUCKET');
     }
 
     /**

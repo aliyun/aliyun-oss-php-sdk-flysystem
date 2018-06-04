@@ -2,6 +2,7 @@ vendor
 composer.lock
 doc
 output
+oss.env
 .idea
 .buildpath
 .project

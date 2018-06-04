@@ -2,46 +2,54 @@
 
 namespace Aliyun\Flysystem\AliyunOss\Tests;
 
+use OSS\Core\OssException;
 use OSS\OssClient;
 use PHPUnit_Framework_TestCase;
 use League\Flysystem\Filesystem;
 use Aliyun\Flysystem\AliyunOss\Plugins\PutFile;
 use Aliyun\Flysystem\AliyunOss\AliyunOssAdapter;
 
-class AliyunOssAdapterTest extends \PHPUnit_Framework_TestCase
+class AliyunOssAdapterTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \League\Flysystem\Filesystem
+     * @var Filesystem
      */
-    protected $filesystem;
+    private $filesystem;
 
-    public function __construct($name = null, array $data = [], $dataName = '')
+    /**
+     * @var AliyunOssAdapter
+     */
+    private $adapter;
+
+    private $test_dir;
+    private $create_dir;
+    private $root_file;
+    private $prepare_file;
+    private $rename_file;
+    private $delete_file;
+
+    /*
+     * TODO 测试依赖
+     */
+
+    public function setUp()
     {
-        parent::__construct($name, $data, $dataName);
-
-        /*
-         * TODO 测试依赖
-         */
-
         $accessId = getenv('OSS_ACCESS_KEY_ID');
         $accessKey = getenv('OSS_ACCESS_KEY_SECRET');
         $endPoint = getenv('OSS_ENDPOINT');
         $bucket = getenv('OSS_BUCKET');
 
         $client = new OssClient($accessId, $accessKey, $endPoint);
-        $adapter = new AliyunOssAdapter($client, $bucket);
-			
-		$dir = time() . 'aliyun-oss-php-flysystem-test-cases';
-        $adapter->setPathPrefix($dir);
+        $this->adapter = new AliyunOssAdapter($client, $bucket);
 
-        $filesystem = new Filesystem($adapter);
+        $this->test_dir = time() . 'aliyun-oss-php-flysystem-test-cases';
+        $this->adapter->setPathPrefix($this->test_dir);
+
+        $filesystem = new Filesystem($this->adapter);
         $filesystem->addPlugin(new PutFile());
 
         $this->filesystem = $filesystem;
-    }
 
-    public function setUp()
-    {
 		$this->create_dir = time() . "test-create-dir";
 
 		$this->prepare_file = time() . "prepare-file";
@@ -52,10 +60,16 @@ class AliyunOssAdapterTest extends \PHPUnit_Framework_TestCase
 
 		$this->delete_file = time() . "delete-file";
         $this->filesystem->write($this->delete_file, 'xxx');
+
+        $this->adapter->setPathPrefix('');
+		$this->root_file = time() . "root-file";
+        $this->filesystem->write($this->root_file, 'xxx');
+        $this->adapter->setPathPrefix($this->test_dir);
 	}
 
 	public function tearDown()
 	{
+        $this->adapter->setPathPrefix($this->test_dir);
         if ($this->filesystem->has($this->prepare_file))
 		{
 			$this->filesystem->delete($this->prepare_file);
@@ -67,6 +81,12 @@ class AliyunOssAdapterTest extends \PHPUnit_Framework_TestCase
         if ($this->filesystem->has($this->delete_file))
 		{
 			$this->filesystem->delete($this->delete_file);
+		}
+
+        $this->adapter->setPathPrefix('');
+        if ($this->filesystem->has($this->root_file))
+		{
+			$this->filesystem->delete($this->root_file);
 		}
 	}
 
@@ -302,6 +322,23 @@ class AliyunOssAdapterTest extends \PHPUnit_Framework_TestCase
 	
 		$this->filesystem->deleteDir($dir);
 	}
+
+    public function testListContents_root()
+    {
+        $this->adapter->setPathPrefix('');
+
+        $list = $this->filesystem->listContents('', false);
+        $paths = array_map(function (array $file) {
+            return $file['path'];
+        }, $list);
+        $this->assertContains($this->root_file, $paths);
+
+        $list = $this->filesystem->listContents('/', false);
+        $paths = array_map(function (array $file) {
+            return $file['path'];
+        }, $list);
+        $this->assertContains($this->root_file, $paths);
+    }
 
     /**
      *
